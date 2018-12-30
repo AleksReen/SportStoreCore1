@@ -44,14 +44,41 @@ namespace SportStoreCore1
             app.UseStaticFiles();
             app.UseMvc(routers => {
 
-                routers.MapRoute(
-                    name: "pagination",
-                    template: "Products/Page{page}",
-                    defaults: new { Controller = "Product", action = "List" });
+                routers.MapRoute(name: null, template: "{category}/Page{page:int}", defaults: new { controller = "Product", action = "List" });
 
-                routers.MapRoute(
-                    name: "default",
-                    template: "{controller=Product}/{action=List}/{id?}");
+                //routers.MapRoute(
+                //    name: null,
+                //    template: "{category}/Page{page:int}",
+                //    defaults: new { Controller = "Product", action = "List" });
+
+                routers.MapRoute(name: null, template: "Page{page:int}", defaults: new { controller = "Product", action = "List", page = 1 });
+
+
+                //routers.MapRoute(
+                //   name: null,
+                //   template: "Page{page:int}",
+                //   defaults: new { Controller = "Product", action = "List", page = 1 });
+
+                routers.MapRoute(name: null, template: "{category}", defaults: new { controller = "Product", action = "List", page = 1 });
+
+                //routers.MapRoute(
+                //   name: null,
+                //   template: "{category}",
+                //   defaults: new { Controller = "Product", action = "List", page = 1 });
+
+                routers.MapRoute(name: null, template: "", defaults: new { controller = "Product", action = "List", page = 1 });
+
+
+                //routers.MapRoute(
+                //   name: null,
+                //   template: "",
+                //   defaults: new { Controller = "Product", action = "List", page = 1 });
+
+                routers.MapRoute(name: null, template: "{controller}/{action}/{id?}");
+
+                //routers.MapRoute(
+                //    name: "default",
+                //    template: "{controller=Product}/{action=List}/{id?}");
             });
           
             SeedData.EnsurePopulated(app);
