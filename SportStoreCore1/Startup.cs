@@ -34,6 +34,8 @@ namespace SportStoreCore1
 
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,43 +44,14 @@ namespace SportStoreCore1
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvc(routers => {
 
                 routers.MapRoute(name: null, template: "{category}/Page{page:int}", defaults: new { controller = "Product", action = "List" });
-
-                //routers.MapRoute(
-                //    name: null,
-                //    template: "{category}/Page{page:int}",
-                //    defaults: new { Controller = "Product", action = "List" });
-
                 routers.MapRoute(name: null, template: "Page{page:int}", defaults: new { controller = "Product", action = "List", page = 1 });
-
-
-                //routers.MapRoute(
-                //   name: null,
-                //   template: "Page{page:int}",
-                //   defaults: new { Controller = "Product", action = "List", page = 1 });
-
                 routers.MapRoute(name: null, template: "{category}", defaults: new { controller = "Product", action = "List", page = 1 });
-
-                //routers.MapRoute(
-                //   name: null,
-                //   template: "{category}",
-                //   defaults: new { Controller = "Product", action = "List", page = 1 });
-
                 routers.MapRoute(name: null, template: "", defaults: new { controller = "Product", action = "List", page = 1 });
-
-
-                //routers.MapRoute(
-                //   name: null,
-                //   template: "",
-                //   defaults: new { Controller = "Product", action = "List", page = 1 });
-
                 routers.MapRoute(name: null, template: "{controller}/{action}/{id?}");
-
-                //routers.MapRoute(
-                //    name: "default",
-                //    template: "{controller=Product}/{action=List}/{id?}");
             });
           
             SeedData.EnsurePopulated(app);
