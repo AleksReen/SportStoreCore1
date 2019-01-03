@@ -4,12 +4,18 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link asp-href-include="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/twitter-bootstrap/css/bootstrap-grid.css" rel="stylesheet" />    
+    <link asp-href-include="~/twitter-bootstrap/css/bootstrap-grid.css" rel="stylesheet" /> 
+    <link asp-href-include="~/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <title>SportStoreCore1</title>
 </head>
 <body>
     <div class="navbar navbar-i bg-inverse" role="navigation">
-        <a class="navbar-brand" href="/">SPORTS STORE</a>
+        <div class="row">
+            <a class="col navbar-brand" href="/">SPORTS STORE</a>
+            <div class="col-4 text-right">
+                @await Component.InvokeAsync("CartSummary")
+            </div>
+        </div>
     </div>    
         <div class="row m-1 p-1">
             <div id="categories" class="col-3">            

@@ -1,0 +1,8 @@
+﻿@model Cart
+
+<small class="navbar-text" style="color:white">
+    <b>Your cart</b> 
+        @Model.Lines.Sum(pr => pr.Quantity)
+    <span>item(s)</span>
+        @Model.CompleteTotalValue().ToString("c")
+</small>
