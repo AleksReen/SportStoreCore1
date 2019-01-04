@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="SportStoreCore1.Tests.OrderControllerTest.Cannot_Checkout_Invalid_Order" /><Add Test="SportStoreCore1.Tests.OrderControllerTest.Can_Check_And_Submit_Order" /><Add Test="SportStoreCore1.Tests.OrderControllerTest.Cannot_Checkout_Empty_Cart" /></Playlist>

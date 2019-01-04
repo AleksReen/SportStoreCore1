@@ -9,7 +9,6 @@
             <th>Item</th>
             <th class="text-right"> Price</th>
             <th class="text-right">Subtotal</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -40,4 +39,5 @@
 
 <div class="text-center">    
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a> 
+    <a class="btn btn-primary" asp-action="Checkout" asp-controller="Order">Checkout</a>
 </div>

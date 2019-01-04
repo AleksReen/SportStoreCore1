@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="SportStoreCore1.Tests.CartTest.Can_Remove_CartLine" /><Add Test="SportStoreCore1.Tests.CartTest.Can_Update_CartLine_Quantity" /><Add Test="SportStoreCore1.Tests.CartTest.Can_Clear_CartLines" /><Add Test="SportStoreCore1.Tests.CartTest.Can_Total_CartLines_Values" /><Add Test="SportStoreCore1.Tests.CartTest.Can_Add_CartLine" /></Playlist>
