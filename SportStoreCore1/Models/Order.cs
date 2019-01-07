@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using static SportStoreCore1.Models.Cart;
 
 namespace SportStoreCore1.Models
@@ -12,8 +9,12 @@ namespace SportStoreCore1.Models
     {
         [BindNever]
         public int OrderId { get; set; }
+
         [BindNever]
         public ICollection<CartLine> Lines { get; set; }
+
+        [BindNever]
+        public bool Shipped { get; set; }
 
         [Required(ErrorMessage = "Please enter a name")]
         public string Name { get; set; }
