@@ -1,12 +1,8 @@
-﻿using SportStoreCore1.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SportStoreCore1.Models
 {
-    public class FakeProductRepository : IProductRepository
+    public class FakeProductRepository
     {
         public IEnumerable<Product> Products => new Product[]
         {
