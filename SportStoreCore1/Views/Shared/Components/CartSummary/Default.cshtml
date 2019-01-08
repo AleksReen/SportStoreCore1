@@ -3,12 +3,18 @@
 <div>
     @if (Model.Lines.Count() > 0)
     {
-        @await Component.InvokeAsync("CartValues") 
+        @await Component.InvokeAsync("CartValues")
     }
 
     <a class="btn btn-sm btn-secondary navbar-btn"
        asp-controller="Cart" asp-action="Index"
        asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
         <i class="fa fa-shopping-cart"></i>
+    </a>
+
+    <a class="btn btn-sm btn-secondary navbar-btn"
+       asp-controller="Admin" asp-action="Index"
+       asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
+        <i class="fa fa-home"></i>
     </a>
 </div>

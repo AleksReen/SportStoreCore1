@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SportStoreCore1.Models
+namespace SportStoreCore1.Models.DbContexts
 {
     public class ApplicationDBContext: DbContext
     {

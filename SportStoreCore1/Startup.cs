@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SportStoreCore1.Models;
+using SportStoreCore1.Models.DbContexts;
+using SportStoreCore1.Models.EFRepositories;
 using SportStoreCore1.Models.Interfaces;
+using SportStoreCore1.Models.TestData;
 
 namespace SportStoreCore1
 {
@@ -28,9 +28,18 @@ namespace SportStoreCore1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDBContext>(options => 
-            options.UseSqlServer(
-                Configuration["Data:SportStoreProductsCore1:ConnectionString"]
+                options.UseSqlServer(
+                    Configuration["Data:SportStoreProductsCore1:ConnectionString"]
                 ));
+
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration["Data:SportStoreIdentity:ConnectionString"]
+                ));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddTransient<IOrderRepository, EFOrderReposotory>();
@@ -48,6 +57,7 @@ namespace SportStoreCore1
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseAuthentication();
             app.UseMvc(routers => {
 
                 routers.MapRoute(name: null, template: "{category}/Page{page:int}", defaults: new { controller = "Product", action = "List" });
@@ -58,6 +68,7 @@ namespace SportStoreCore1
             });
           
             SeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

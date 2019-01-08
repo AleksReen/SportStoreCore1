@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
+using SportStoreCore1.Models.DbContexts;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace SportStoreCore1.Models
+namespace SportStoreCore1.Models.TestData
 {
     public static class SeedData
     {
