@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SportStoreCore1.Models.DbContexts;
 using SportStoreCore1.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SportStoreCore1.Models
+namespace SportStoreCore1.Models.EFRepositories
 {
     public class EFOrderReposotory : IOrderRepository
     {

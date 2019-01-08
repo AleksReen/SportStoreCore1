@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportStoreCore1.Models;
 using SportStoreCore1.Models.Interfaces;
@@ -19,9 +17,11 @@ namespace SportStoreCore1.Controllers
             cart = cartService;
         }
 
+        [Authorize]
         public IActionResult List() => View(repository.Orders.Where(o => !o.Shipped));
 
         [HttpPost]
+        [Authorize]
         public IActionResult MarkShipped(int orderId)
         {
             var order = repository.Orders
