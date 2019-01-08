@@ -9,7 +9,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <title>_AdminLayout</title>
+    <script src="~/jquery/jquery.js"></script>
+    <script src="~/jquery-validate/jquery.validate.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <title>@ViewBag.Title</title>
+
+    <style>
+        .input-validation-error{border-color: red; background-color: #fee;}
+    </style>
+
 </head>
 <body class="m-1 p-1">
     <div class="bg-info p-2">
@@ -17,6 +25,12 @@
             @ViewBag.Title
         </h4>
     </div>
+    @if (TempData["message"] != null)
+    {
+        <messanger page-message="@TempData["message"]"></messanger>
+    }
     @RenderBody()
+
 </body>
+
 </html>

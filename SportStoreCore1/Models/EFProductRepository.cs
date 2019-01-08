@@ -1,4 +1,5 @@
-﻿using SportStoreCore1.Models.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using SportStoreCore1.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,19 @@ namespace SportStoreCore1.Models
             context = ctx;
         }
         public IEnumerable<Product> Products => context.Products;
+
+        public Product DeleteProduct(int productId)
+        {
+            var prod = context.Products
+                .FirstOrDefault(p => p.ProductID == productId);
+
+            if (prod != null)
+            {
+                context.Products.Remove(prod);
+                context.SaveChanges();
+            }
+            return prod;
+        }
 
         public void SaveProduct(Product product)
         {
